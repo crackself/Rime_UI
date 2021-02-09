@@ -1,0 +1,276 @@
+# Rime dictionary
+# encoding: utf-8
+#
+#
+# 於重新部署後生效
+#
+
+---
+name: luna_pinyin.game
+version: "2021.01.15"
+sort: by_weight
+use_preset_vocabulary: true
+# 此处为扩充词库（基本）默认链接载入的词库
+# import_tables:
+  # - luna_pinyin
+...
+
+冰锤	bing chui	1
+冰拳	bing quan	1
+惩戒	cheng jie	1
+穿甲	chuan jia	1
+传送	chuan song	1
+脆皮	cui pi	1
+打大龙	da da long	1
+打团	da tuan	1
+打小龙	da xiao long	1
+打野	da ye	1
+带节奏	dai jie zou	1
+带线	dai xian	1
+电刀	dian dao	1
+点燃	dian ran	1
+法穿	fa chuan	1
+法强	fa qiang	1
+法师	fa shi	1
+反甲	fan jia	1
+复活甲	fu huo jia	1
+辅助	fu zhu	1
+攻速	gong su	1
+蛤蟆	ha ma	1
+黑切	hei qie	1
+红爸	hong ba	1
+护甲	hu jia	1
+换线	huan xian	1
+疾步	ji bu	1
+金身	jin shen	1
+控线	kong xian	1
+拉野	la ye	1
+蓝爸	lan ba	1
+冷却	leng que	1
+绿叉	lv cha	1
+螃蟹	pang xie	1
+屏障	ping zhang	1
+破败	po bai	1
+抢兵	qiang bing	1
+抢人头	qiang ren tou	1
+清兵线	qing bing xian	1
+轻语	qing yu	1
+三狼	san lang	1
+三相	san xiang	1
+闪现	shan xian	1
+上单	shang dan	1
+伤害	shang hai	1
+石头	shi tou	1
+守塔	shou ta	1
+输出奶妈	shu chu nai ma	1
+坦克	tan ke	1
+贪欲	tan yu	1
+躺赢	tang ying	1
+偷龙	tou long	1
+偷水晶补兵	tou shui jing bu bing	1
+偷塔	tou ta	1
+投降	tou xiang	1
+团控	tuan kong	1
+推塔	tui ta	1
+无尽	wu jin	1
+虚弱	xu ruo	1
+眼石女妖	yan shi nv yao	1
+羊刀	yang dao	1
+野刀	ye dao	1
+野鸟	ye niao	1
+一波	yi bo	1
+移速	yi su	1
+饮血	yin xue	1
+影魔	ying mo	1
+幽梦	you meng	1
+战士	zhan shi	1
+治疗	zhi liao	1
+中单	zhong dan	1
+中亚	zhong ya	1
+阿卡丽	a ka li	1
+阿狸	a li	1
+阿木木	a mu mu	1
+艾克	ai ke	1
+艾希	ai xi	1
+奥拉夫	ao la fu	1
+巴德	ba de	1
+板甲	ban jia	1
+豹女	bao nv	1
+冰锤	bing chui	1
+冰女	bing nv	1
+冰拳	bing quan	1
+波比	bo bi	1
+不等你	bu deng ni	1
+布隆	bu long	1
+不香吗	bu xiang ma	1
+菜鸡	cai ji	1
+菜鸡互啄	cai ji hu zhuo	1
+草丛伦	cao cong lun	1
+惩戒	cheng jie	1
+出门装	chu men zhuang	1
+出肉	chu rou	1
+触手怪	chu shou guai	1
+穿甲	chuan jia	1
+船长	chuan zhang	1
+锤石	chui shi	1
+大虫子	da chong zi	1
+打大龙	da da long	1
+打团	da tuan	1
+打小龙	da xiao long	1
+打野	da ye	1
+带节奏	dai jie zou	1
+带线	dai xian	1
+刀女	dao nv	1
+德邦	de bang	1
+电刀	dian dao	1
+厄加特	e jia te	1
+法穿	fa chuan	1
+法强	fa qiang	1
+发条	fa tiao	1
+反甲	fan jia	1
+风女	feng nv	1
+复活甲	fu huo jia	1
+辅助不见了	fu zhu bu jian le	1
+盖伦	gai lun	1
+高富帅	gao fu shuai	1
+攻速	gong su	1
+蛤蟆	ha ma	1
+海妖	hai yao	1
+好运姐	hao yun jie	1
+黑切	hei qie	1
+红爸	hong ba	1
+护甲	hu jia	1
+互啄	hu zhuo	1
+滑板鞋	hua ban xie	1
+皇子	huang zi	1
+会玩	hui wan	1
+火男	huo nan	1
+火女	huo nv	1
+疾步	ji bu	1
+疾风剑豪	ji feng jian hao	1
+加里奥	jia li ao	1
+剑姬	jian ji	1
+剑魔	jian mo	1
+皎月	jiao yue	1
+婕拉	jie la	1
+金克丝	jin ke si	1
+金身	jin shen	1
+巨魔	ju mo	1
+卡尔玛	ka er ma	1
+卡牌	ka pai	1
+卡撒丁	ka sa ding	1
+卡莎	ka sha	1
+卡特	ka te	1
+卡兹克	ka zi ke	1
+凯南	kai nan	1
+凯隐	kai yin	1
+克烈	ke lie	1
+控线	kong xian	1
+奎因	kui yin	1
+拉克丝	la ke si	1
+拉野	la ye	1
+蓝爸	lan ba	1
+兰博	lan bo	1
+冷却	leng que	1
+莉莉娅	li li ya	1
+龙吧	long ba	1
+龙龟	long gui	1
+卢仙	lu xian	1
+轮子妈	lun zi ma	1
+绿叉	lv cha	1
+蛮王	man wang	1
+盲僧	mang seng	1
+蒙多	meng duo	1
+莫甘娜	mo gan na	1
+纳尔	na er	1
+娜美	na mei	1
+奶妈	nai ma	1
+男刀	nan dao	1
+男枪	nan qiang	1
+努努	nu nu	1
+女刀	nv dao	1
+女枪	nv qiang	1
+派克	pai ke	1
+潘森	pan sen	1
+螃蟹	pang xie	1
+屏障	ping zhang	1
+破败	po bai	1
+奇亚娜	qi ya na	1
+千珏	qian jue	1
+抢兵	qiang bing	1
+抢人头	qiang ren tou	1
+琴女	qin nv	1
+清兵线	qing bing xian	1
+青钢影	qing gang ying	1
+轻语	qing yu	1
+球女	qiu nv	1
+人马	ren ma	1
+日女	ri nv	1
+日炎	ri yan	1
+瑞雯	rui wen	1
+瑞兹	rui zi	1
+赛恩	sai en	1
+塞拉斯	sai la si	1
+赛娜	sai na	1
+三狼	san lang	1
+三只手	san zhi shou	1
+沙皇	sha huang	1
+莎弥拉	sha mi la	1
+闪现	shan xian	1
+扇子妈	shan zi ma	1
+上段	shang duan	1
+伤害	shang hai	1
+蛇女	she nv	1
+石头	shi tou	1
+守塔	shou ta	1
+死歌	si ge	1
+塔姆	ta mu	1
+太脆	tai cui	1
+贪欲	tan yu	1
+躺赢	tang ying	1
+提莫	ti mo	1
+铁男	tie nan	1
+偷龙	tou long	1
+偷水晶	tou shui jing	1
+偷塔	tou ta	1
+团控	tuan kong	1
+推塔	tui ta	1
+挖掘机	wa jue ji	1
+腕豪	wan hao	1
+薇恩	wei en	1
+韦鲁斯	wei lu si	1
+乌迪尔	wu di er	1
+无尽	wu jin	1
+下把	xia ba	1
+先秒	xian miao	1
+小法	xiao fa	1
+小炮	xiao pao	1
+小鱼人	xiao yu ren	1
+辛德拉	xin de la	1
+信爷	xin ye	1
+星妈	xing ma	1
+虚弱	xu ruo	1
+亚索	ya suo	1
+岩雀	yan que	1
+眼石女妖	yan shi nv yao	1
+羊刀	yang dao	1
+羊来	yang lai	1
+妖姬	yao ji	1
+野刀	ye dao	1
+野鸟	ye niao	1
+一波	yi bo	1
+移速	yi su	1
+隐藏分	yin cang fen	1
+饮魔刀	yin mo dao	1
+饮血	yin xue	1
+影魔	ying mo	1
+永恩	yong en	1
+幽梦	you meng	1
+泽拉斯	ze la si	1
+炸弹人	zha dan ren	1
+扎克	zha ke	1
+赵信	zhao xin	1
+真眼	zhen yan	1
+中亚	zhong ya	1
+猪妹	zhu mei	1
+佐伊	zuo yi	1

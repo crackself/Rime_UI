@@ -1,0 +1,37 @@
+# Rime dictionary
+# encoding: utf-8
+#
+# 「Rime词库扩展计划」——为小狼毫打造一个强大好用的词库（OpenCC重制 芦雪简体版） by @imy0823
+#
+#
+# 部署位置：
+# ~/.config/ibus/rime  (Linux)
+# ~/Library/Rime  (Mac OS)
+# %APPDATA%\Rime  (Windows)
+#
+# 于重新部署后生效
+#
+
+---
+name: luna_pinyin.extended
+version: "2021.01.15"
+sort: by_weight
+use_preset_vocabulary: true
+# 此处为扩充词库（基本）默认链接载入的词库
+import_tables:
+  #- luna_pinyin    # 不加载默认词库，可避免词库过大，出现太多生僻字
+  - luna_pinyin.xiandaihanyuchangyongcibiao
+  - crackself_dictionary
+  - luna_pinyin.computer
+  - luna_pinyin.doctor
+  - luna_pinyin.game
+  - luna_pinyin.chengyu
+  - luna_pinyin.shici
+  - luna_pinyin.zhongguolishicihuidaquan
+  - luna_pinyin.cn_en
+  - luna_pinyin.i
+  - luna_pinyin.emoji
+  - luna_pinyin.emoji.apple
+  - luna_pinyin.emoji.cldr
+  - luna_pinyin.emoji.scomper
+  - luna_pinyin.kaomoji

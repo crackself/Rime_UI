@@ -1,0 +1,45 @@
+# luna_pinyin.custom.yaml
+patch:
+  # 指定自定义词库位置
+  "translator/dictionary": luna_pinyin.extended
+  switches:                   # 注意縮進
+    - name: ascii_mode        # 中英文轉換開關。預設0爲中文，1爲英文
+      reset: 0
+      states: [ 中文, 西文 ]
+    - name: full_shape        # 全角符號／半角符號開關。注意，開啓全角時英文字母亦爲全角。0爲半角，1爲全角
+      reset: 0
+      states: [ 半角, 全角 ]
+    - name: simplification    # 轉化字開關。一般情況下與上同，0爲不開啓轉化，1爲轉化。
+      reset: 1
+      states: [ 漢字, 汉字 ]
+  engine:
+    processors:
+      - ascii_composer
+      - recognizer
+      - key_binder
+      - speller
+      - punctuator
+      - selector
+      - navigator
+      - express_editor
+    segmentors:
+      - ascii_segmentor
+      - matcher
+      - abc_segmentor
+      - punct_segmentor
+      - fallback_segmentor
+    translators:
+      - punct_translator
+      - table_translator
+      - reverse_lookup_translator
+      - script_translator
+    filters:
+      - simplifier
+      - uniquifier
+      - cjk_minifier  #過濾拼音輸入法中的罕用字
+  #自定义符号输入
+  "punctuator/symbols":
+    "/gou" : ["√","✔"]
+    "/dui" : ["√","✔"]
+  # 添加简拼支持https://rime-aca.tumblr.com/post/67241713724/rime%E6%96%B9%E6%A1%88%E8%A3%BD%E4%BD%9C%E8%A9%B3%E8%A7%A3
+  "speller/algebra/@before 1": xform/^([b-df-hj-np-tv-z])$/$1_/

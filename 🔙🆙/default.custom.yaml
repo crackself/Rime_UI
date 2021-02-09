@@ -1,0 +1,23 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.14.3
+  generator: "Rime::SwitcherSettings"
+  modified_time: "Sun Feb  7 21:49:44 2021"
+  rime_version: 1.5.3
+patch:
+  "ascii_composer/switch_key":
+    Shift_L: commit_code
+    Shift_R: commit_code
+  "menu/page_size": 10
+  schema_list:
+    - {schema: luna_pinyin}
+    #- {schema: crackself}
+    # - {schema: easy_en}
+    #- {schema: wubi86}
+  "switcher/hotkeys":
+    - "Control+grave"
+    - F4
+  "switcher/save_options":
+    - full_shape
+    - ascii_punct
+    - simplification

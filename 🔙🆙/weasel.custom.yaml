@@ -1,0 +1,33 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.14.3
+  generator: "Weasel::UIStyleSettings"
+  modified_time: "Sun Jan 24 13:23:08 2021"
+  rime_version: 1.5.3
+patch:
+  "style/color_scheme": longyan
+  "preset_color_schemes/longyan":
+    name: 龍眼／LongYan
+    author: wenzhi
+    back_color: 0x000000
+    border_color: 0x0000FF
+    text_color: 0xED8C0C
+    hilited_text_color: 0x0000FF
+    hilited_back_color: 0xDDDDDD
+    hilited_candidate_text_color: 0x0000FF
+    hilited_candidate_back_color: 0x000000
+    candidate_text_color: 0xDDDDDD
+    comment_text_color: 0x09AB1E
+    # text_color: 0xFFFFFF                        # 編碼行文字顏色，24位色值，用十六進制書寫方便些，順序是藍綠紅0xBBGGRR
+    # candidate_text_color: 0xFFFFFF              # 候選項文字顏色，當與文字顏色不同時指定
+    # back_color: 0x000000                        # 底色
+    # border_color: 0x0000FF                      # 邊框顏色，與底色相同則爲無邊框的效果
+    # hilited_text_color: 0x00FFFF                # 高亮文字，即與當前高亮候選對應的那部份輸入碼    拼音部分
+    # hilited_back_color: 0xA9A9A9                # 設定高亮文字的底色，可起到凸顯高亮部份的作用    拼音部分
+    # hilited_candidate_text_color: 0x0000FF      # 高亮候選項的文字顏色，要醒目！                   选词部分
+    # hilited_candidate_back_color: 0x000000      # 高亮候選項的底色，若與背景色不同就會顯出光棒    选词部分
+  "style/display_tray_icon": false
+  "style/font_face": "黑体"
+  "style/font_point": 18
+  "style/horizontal": false      # 候選橫排
+  "style/inline_preedit": false  # 內嵌編碼（僅支持TSF）顯示拼音區

@@ -41,5 +41,13 @@ patch:
   "punctuator/symbols":
     "/gou" : ["√","✔"]
     "/dui" : ["√","✔"]
+    punctuator/full_shape:
+    "\\": "、"
+    "@": "@"
+  punctuator/half_shape:
+    "\\": "、"
+    "@": "@"
+    "#": "#"
+    "^": ["^","……"]
   # 添加简拼支持https://rime-aca.tumblr.com/post/67241713724/rime%E6%96%B9%E6%A1%88%E8%A3%BD%E4%BD%9C%E8%A9%B3%E8%A7%A3
   "speller/algebra/@before 1": xform/^([b-df-hj-np-tv-z])$/$1_/

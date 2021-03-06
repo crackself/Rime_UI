@@ -10,8 +10,7 @@ patch:
     Shift_R: commit_code
   "menu/page_size": 5  # 设定候选词个数
   schema_list:
-    - {schema: luna_pinyin}
-    #- {schema: crackself}
+    - {schema: crackself}
     # - {schema: easy_en}
     #- {schema: wubi86}
   "switcher/hotkeys":

@@ -1,0 +1,25 @@
+# Rime dictionary
+# encoding: utf-8
+#
+# 「Rime词库扩展计划」——为小狼毫打造一个强大好用的词库（OpenCC重制 芦雪简体版） by @imy0823
+#
+#
+# 部署位置：
+# ~/.config/ibus/rime  (Linux)
+# ~/Library/Rime  (Mac OS)
+# %APPDATA%\Rime  (Windows)
+#
+# 于重新部署后生效
+#
+
+---
+name: crackself
+version: "2021.01.15"
+sort: by_weight
+use_preset_vocabulary: true
+# 此处为扩充词库（基本）默认链接载入的词库
+import_tables:
+  - luna_pinyin    # 默认明月拼音词库
+  - crackself.emoji
+  - crackself.custom
+

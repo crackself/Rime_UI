@@ -1,0 +1,21 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.15.0.0
+  generator: "Rime::SwitcherSettings"
+  modified_time: "Sun Jun 11 09:11:53 2023"
+  rime_version: 1.8.5
+patch:
+  schema_list:
+    - {schema: luna_pinyin}
+    #- {schema: luna_pinyin_simp}
+    #- {schema: melt_eng}
+    - {schema: rime_ice}
+    - {schema: wubi86}
+  #
+  menu/page_size: 5
+  #menu/alternative_select_labels: [ Ⅰ, Ⅱ, Ⅲ, Ⅳ, Ⅴ, Ⅵ, Ⅶ, Ⅷ, Ⅸ, Ⅹ ]
+  key_binder/bindings:
+    - { when: paging, accept: comma, send: Page_Up }      # 逗号上一页
+    - { when: has_menu, accept: period, send: Page_Down } #句号下一页
+    - { when: paging, accept: bracketleft, send: Page_Up }  #[ 上一页
+    - { when: has_menu, accept: bracketright, send: Page_Down } # ］下一页

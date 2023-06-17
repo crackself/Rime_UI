@@ -1,0 +1,44 @@
+# Rime user dictionary
+#@/db_name	wubi86
+#@/db_type	userdb
+#@/rime_version	1.8.5
+#@/tick	18
+#@/user_id	wenzhi
+ctwg 	骄傲	c=1 d=1 t=7
+dddd 	大	c=1 d=1 t=18
+def 	有	c=1 d=1 t=12
+djdd 	非	c=1 d=1 t=2
+djip 	非常	c=1 d=1 t=6
+ggll 	一	c=1 d=1 t=16
+goi 	来	c=1 d=1 t=13
+ipkh 	常	c=1 d=1 t=3
+ipm 	沉	c=1 d=1 t=4
+j 	是	c=1 d=1 t=8
+js 	果	c=1 d=1 t=11
+lfod 	默	c=1 d=1 t=5
+rnrt 	扬	c=1 d=1 t=1
+rqyy 	的	c=1 d=1 t=9
+tgd 	生	c=1 d=1 t=14
+txg 	每	c=1 d=1 t=15
+uqwy 	次	c=1 d=1 t=17
+vk 	如	c=1 d=1 t=10
+encdego 	有来	c=0 d=0.1 t=13
+encdgtg 	有来生	c=0 d=0.1 t=14
+encdicw 	非常骄傲	c=0 d=0.1 t=7
+encdiil 	非常沉默	c=0 d=0.1 t=5
+encdiip 	非常沉	c=0 d=0.1 t=4
+encdjip 	非常	c=0 d=0.1 t=3
+encgguq 	一次	c=0 d=0.1 t=17
+encgotg 	来生	c=0 d=0.1 t=14
+enciilf 	常沉默	c=0 d=0.1 t=5
+encipip 	常沉	c=0 d=0.1 t=4
+enciplf 	沉默	c=0 d=0.1 t=5
+encjdgo 	果有来	c=0 d=0.1 t=13
+encjdgt 	果有来生	c=0 d=0.1 t=14
+encjgrq 	是的	c=0 d=0.1 t=9
+encjsde 	果有	c=0 d=0.1 t=12
+enctguq 	每一次	c=0 d=0.1 t=17
+enctxgg 	每一	c=0 d=0.1 t=16
+encvjde 	如果有	c=0 d=0.1 t=12
+encvjdg 	如果有来	c=0 d=0.1 t=13
+encvkjs 	如果	c=0 d=0.1 t=11

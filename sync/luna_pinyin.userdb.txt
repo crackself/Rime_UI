@@ -1,0 +1,12 @@
+# Rime user dictionary
+#@/db_name	luna_pinyin
+#@/db_type	userdb
+#@/rime_version	1.8.5
+#@/tick	6
+#@/user_id	wenzhi
+biao 	表	c=1 d=1 t=3
+fan ti zi 	繁體字	c=1 d=1 t=4
+she zhi 	設置	c=1 d=1 t=5
+wen yan wen 	文言文	c=1 d=1 t=6
+wu bi 	五筆	c=1 d=1 t=1
+zi gen 	字根	c=1 d=1 t=2

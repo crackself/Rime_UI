@@ -1,0 +1,38 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.15.0.0
+  generator: "Rime::SwitcherSettings"
+  modified_time: "Thu Mar 21 21:07:03 2024"
+  rime_version: 1.10.0
+patch:
+  "switcher/hotkeys":
+    - Control+grave
+    - F4
+  "key_binder/bindings":
+    - {accept: comma, send: Page_Up, when: paging}
+    - {accept: period, send: Page_Down, when: has_menu}
+    - {accept: bracketleft, send: Page_Up, when: paging}
+    - {accept: bracketright, send: Page_Down, when: has_menu}
+  #-----------------------------------------------
+  # 中英文切换自定义
+  #-----------------------------------------------
+  # inline_ascii  在输入法的临时英文编辑区内输入字母，数字，符号，空格等，回车上屏后自动复位到中文
+  # commit_text   已输入的候选文字上屏并切换至英文输入模式
+  # commit_code   已输入的编码字符上屏并切换至英文输入模式
+  # -----------------------------------------------
+  # 参考链接： https://gist.github.com/lotem/2981316
+  "ascii_composer":
+    good_old_caps_lock: true       # true: 在保持 cap 键原有的特征， false: 点击不会切换大小写
+  "ascii_composer/switch_key":
+    Shift_L: commit_code
+    Shift_R: commit_code
+    Caps_Lock: clear
+  "menu/page_size": 6 # 候选词个数
+
+  schema_list:
+    - {schema: rime_ice}
+    - {schema: luna_pinyin}
+    - {schema: luna_pinyin_simp}
+    - {schema: wubi86_jidian_pinyin}
+    - {schema: wubi86_jidian_trad}
+    - {schema: melt_eng}

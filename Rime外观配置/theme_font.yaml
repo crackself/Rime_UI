@@ -1,0 +1,13 @@
+patch:
+  # Helvetica 为MacOS字体 
+  # 字体配置 你可以分别指定全局字符，标签字符和注释字符的字体。每个字体条目都支持同时指定多个字体，字体间之间用逗号分隔。当某个字符用首位字体无法呈现时，会顺位使用第二个指定的字体呈现，以此类推。指定字体的格式为
+  style/font_face: "Segoe UI Emoji:30:39:Bold, LXGW WenKai, SF Pro, Segoe UI Emoji, Helvetica"
+  style/font_point: 30            # 字號，只認數字的，不認「五號」、「小五」這樣的
+  #
+  style/label_font_face: "Segoe UI Emoji:30:39:Bold, LXGW WenKai, SF Pro, Segoe UI Emoji, Helvetica"	# 候选字序号字体
+  style/label_font_point: 20			# 候选字序号字体大小
+  #
+  style/comment_font_face: "Segoe UI Emoji:30:39:Bold, LXGW WenKai, SF Pro, Segoe UI Emoji, Helvetica"	# 註解字體
+  style/comment_font_point: 20    # 註解字體大小
+  #
+  style/layout/align_type: center # 	标签、候选文字、注解文字之间的相对对齐方式。"top" | "center" | "bottom"

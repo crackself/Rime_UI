@@ -1,0 +1,28 @@
+㞢 Rime外观配置
+
+设计思路：外观配置文件模块化储存，并采用patch方式引入，不对默认文件修改，全平台通用
+
+📄文件说明：
+	theme_ui_squirrel.yaml	主窗口形状，高度、圆角、边框、透明度
+	theme_ui_weasel.yaml
+	theme_color.yaml	主窗口配色
+	theme_font.yaml		主窗口字体
+
+
+启用方式：
+	将如下写入到xxx.custom.yaml文件，并重新部署
+	1. MacOS：	主程序Squirrel，默认配置文件为squirrel.yaml，引入外观配置：squirrel.custom.yaml
+	2. Windows：主程序Weasel，默认配置文件为weasel.yaml，引入外观配置：squirrel.custom.yaml
+
+patch:
+ __include: "theme_window:/patch"
+ __include: "theme_fonts:/patch"
+ __include: "theme_scheme:/patch"
+
+
+⚠️注意：
+	squirrel与weasel支持的圆角参数、色彩透明、磨砂外观等有细微差别，务必仔细阅读各自release_note
+	squirrel：https://github.com/rime/squirrel?tab=readme-ov-file
+	https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/鼠鬚管介面配置指南.md
+	weasel：https://github.com/rime/weasel
+	https://github.com/rime/weasel/wiki

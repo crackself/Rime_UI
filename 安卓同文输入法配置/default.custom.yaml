@@ -1,0 +1,10 @@
+customization:
+  distribution_code_name: trime
+  distribution_version: "v3.2.17-20240413"
+  generator: "Rime::SwitcherSettings"
+  modified_time: "Tue Apr 30 22:45:36 2024"
+  rime_version: 1.9.0
+patch:
+  schema_list:
+    - {schema: melt_eng}
+    - {schema: luna_pinyin}

@@ -2,102 +2,47 @@
 # encoding: utf-8
 # 朙月拼音自定義修改，用於自帶的默認朙月拼音
 # 参考定制指南 https://github.com/rime/home/wiki/RimeWithSchemata#%E5%AE%9A%E8%A3%BD%E6%8C%87%E5%8D%97
+
+#patch:
+#  "一級設定項/二級設定項/三級設定項": 新的設定值
+#  "另一個設定項": 新的設定值
+#  "再一個設定項": 新的設定值
+#  "含列表的設定項/@0": 列表第一個元素新的設定值
+#  "含列表的設定項/@last": 列表最後一個元素新的設定值
+#  "含列表的設定項/@before 0": 在列表第一個元素之前插入新的設定值（不建議在補靪中使用）
+#  "含列表的設定項/@after last": 在列表最後一個元素之後插入新的設定值（不建議在補靪中使用）
+#  "含列表的設定項/@next": 在列表最後一個元素之後插入新的設定值（不建議在補靪中使用）
+
 patch:
-    # 增加emoji https://github.com/rime/rime-emoji/tree/master
+
+  # 添加輸入方案ico圖標，windows下生效
+  "schema/icon": pinyin.ico
+
+  # 一、默認簡體輸出
+  "switches/@2/reset": 1  #表示將 switcher 列表中的第三個元素（即 simplification 開關）的初始值重設爲狀態1（即「簡體漢字」）。
+
+  # 二、增加emoji，swiches添加emoji开关， 添加emoji词典入口，词库添加emoji入口
+  # emoji資源 https://github.com/rime/rime-emoji/tree/master
+  "switches/@after 2":
+    name: emoji
+    reset: 1
+    states: [ 💀, 😄 ]
+
   emoji:
     opencc_config: emoji.json
     option_name: emoji
     tips: none
     inherit_comment: false
   # 结束emoji
-  #
-  dependencies:
-    - melt_eng
-  #
-  translator/dictionary: luna_pinyin.extended   # 使用词库luna_pinyin.extended.dict.yml以扩展词库
-  translator/enable_user_dict: true       # 启用用户词典，动态词频
-  translator/nitial_quality: 1.5
-  translator/contextuals: true  # 开启八股文
-  translator/enable_charset_filter: true  # 过滤生僻字
-  #translator:
-  #  initial_quality: 1.2          # 拼音的权重应该比英文大
-  #  dictionary: luna_pinyin     # 挂载词库 melt_eng.dict.yaml
-  #  contextuals: true  # 开启八股文
-  #  preedit_format:
-  #  - xform/([nl])v/$1ü/
-  #  - xform/([nl])ue/$1üe/
-  #  - xform/([jqxy])v/$1u/
-  
-  # 次翻译器，英文
-  melt_eng:
-    dictionary: melt_eng     # 挂载词库 melt_eng.dict.yaml
-    enable_sentence: false   # 禁止造句
-    enable_user_dict: true  # 启用用户词典，动态词频
-    initial_quality: 0     # 初始权重
-    comment_format:          # 自定义提示码
-      - xform/.*//           # 清空提示码
-  #
-  switches/@2/reset: 1    #表示將 switcher 列表中的第三個元素（即 simplification 開關）的初始值重設爲狀態1（即「简体」）。
-  switches/@next:         #表示在 switcher 列表中最后增加一个项目
-    name: emoji
-    reset: 1
-    states: [ "🈚︎", "🈶️" ]
-  #
-  switches/@after 4:
-    options: [utf8, gbk, gb2312]    # (※2) 字符集选单 
-    reset: 1                        # 默认 GBK
-    states:                         # 可以通过切功能键，切至 UTF8 等超大字符集
-      - UTF-8
-      - GBK
-      - GB2312
-  #
-  engine/processors/@before 0:
-    lua_processor@select_character      # 以词定字
 
-  #
-  engine/translators/@after 0:
-    lua_translator@date_translator      # 时间、日期、星期
-  engine/translators/@after 1:
-    lua_translator@lunar                # 农历
-  engine/translators/@after 2:
-    table_translator@melt_eng           # 英文输入
-  engine/translators/@after 3:
-    lua_translator@cn_en                # 中英混合词汇
-  engine/translators/@after 4:
-    lua_translator@unicode              # Unicode
-  engine/translators/@after 5:
-    lua_translator@number_translator    # 数字、金额大写
-  engine/translators/@after 6:
-    lua_translator@custom_phrase        # 自定义短语 custom_phrase.txt
+  “translator/dictionary”: luna_pinyin.extended   # 使用词库luna_pinyin.extended.dict.yml以扩展词库
 
-  #
+  # engine
   engine/filters/@before 0:
     simplifier@emoji                    # Emoji
-  engine/filters/@before 1:
-    simplifier@traditionalize           # 简繁切换
-  engine/filters/@before 2:
-    lua_filter@v_filter                 # v 模式 symbols 优先（否则是英文优先）
-  engine/filters/@before 3:
-    lua_filter@autocap_filter           # 英文自动大写
-  engine/filters/@before 4:
-    lua_filter@reduce_english_filter    # 降低部分英语单词在候选项的位置
-  engine/filters/@before 5:
-    lua_filter@long_word_filter         # 长词优先
-  engine/filters/@before 6:
-    lua_filter@corrector                # 错音错字提示 
-  engine/filters/@before 7:
-    lua_filter@pin_cand_filter          # 置顶候选项（顺序要求：置顶候选项 > Emoji > 简繁切换）
-  engine/filters/@before 8:
-    lua_filter@pin_cand_filter          # 置顶候选项（顺序要求：置顶候选项 > Emoji > 简繁切换）
+  # 結束emoji配置
 
-
-  # 反查：两分（拼字）
-  liangfen:
-    dictionary: liangfen     # 挂载两分词典 liangfen.dict.yaml
-    prefix: "u"              # 以 u 开头来反查
-    enable_completion: true  # 补全提示
-    # tips: 〔两分〕          # 反查时显示的文字，建议注释掉，否则很多 u 开头的英文单词也会显示这个
-  
+  # 三、lua腳本功能
   # Lua 配置: 日期、时间、星期、ISO 8601、时间戳的触发关键字
   date_translator:
     date: rq       # 日期： 2022-11-29
@@ -105,7 +50,6 @@ patch:
     week: xq       # 星期： 星期二
     datetime: dt   # ISO 8601： 2022-11-29T18:13:11+08:00
     timestamp: ts  # 时间戳： 1669716794
-  
   # Lua 配置: 长词优先，提升 count 个词语，插入到第 idx 个位置。
   # 示例：将 2 个词插入到第 4、5 个候选项，输入 jie 得到「1接 2解 3姐 4饥饿 5极恶」
   long_word_filter:
@@ -127,6 +71,44 @@ patch:
     key, mob, buy, dam, wap, yes, but, put, lag, buf, lip, aid, aim, dig, dim, din,
     dip, pail, cad, chap, bend]
 
+  # 添加engine入口
+  engine/translators/@after 0:
+    lua_translator@date_translator      # 时间、日期、星期
+  engine/translators/@after 1:
+    lua_translator@lunar                # 农历
+
+  # 四、中英文混輸、英文輸入
+  dependencies:
+    - melt_eng
+  melt_eng:
+    dictionary: melt_eng     # 挂载词库 melt_eng.dict.yaml
+    enable_sentence: false   # 禁止造句
+    enable_user_dict: true  # 启用用户词典，动态词频
+    initial_quality: 0     # 初始权重
+    comment_format:          # 自定义提示码
+      - xform/.*//           # 清空提示码
+  # 添加engine入口
+  engine/translators/@after 2:
+    table_translator@melt_eng           # 英文输入
+  engine/translators/@after 3:
+    lua_translator@cn_en                # 中英混合词汇
+
+
+  # 五、其它engine功能
+  # 添加engine入口
+  engine/translators/@after 4:
+    lua_translator@number_translator    # 数字、金额大写
+  engine/filters/@after 0:
+    lua_filter@v_filter                 # v 模式 symbols 优先（否则是英文优先）
+
+  engine/filters/@after 1:
+    lua_filter@reduce_english_filter    # 降低部分英语单词在候选项的位置
+  engine/filters/@after 2:
+    lua_filter@long_word_filter         # 长词优先
+  engine/filters/@after 3:
+    lua_filter@corrector                # 错音错字提示
+
+  # 五、符號輸入定製
   punctuator:
     full_shape:
       '\': "、"
@@ -144,5 +126,13 @@ patch:
     reverse_lookup: "`[a-z]*'?$"
     unicode: "^U[a-f0-9]+"            # 响应 Unicode
     number: "^R[0-9]+[.]?[0-9]*"      # 响应 number_translator
-    
-  
+
+  # 七、自定义短语
+  # 自定义短语：custom_phrase.txt
+  custom_phrase:
+    dictionary: ""
+    user_dict: custom_phrase  # 可以修改这里，改成自己的 txt 文件
+    db_class: stabledb        # 只读数据库，无法动态调频；设为 tabledb 可以动态调频
+    enable_completion: false  # 补全提示
+    enable_sentence: false    # 禁止造句
+    initial_quality: 99       # custom_phrase 的权重应该比 pinyin 和 melt_eng 大

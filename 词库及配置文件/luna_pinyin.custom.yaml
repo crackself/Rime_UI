@@ -15,34 +15,60 @@
 
 patch:
 
-  # 添加輸入方案ico圖標，windows下生效
-  "schema/icon": pinyin.ico
+  # 一、添加輸入方案ico圖標，windows下生效
+  schema/icon: pinyin.ico
 
-  # 一、默認簡體輸出
+  # 二、扩展词库配置
+  "translator/dictionary": luna_pinyin.extended   # 使用词库luna_pinyin.extended.dict.yml以扩展词库
+  "translator/initial_quality": 1.5         # 拼音的权重应该比英文大
+
+  # 三、中英文混輸、英文輸入
+  dependencies:
+    - melt_eng
+
+  # 次翻译器，英文
+  melt_eng:
+    dictionary: melt_eng     # 挂载词库 melt_eng.dict.yaml
+    enable_sentence: false   # 禁止造句
+    enable_user_dict: false  # 启用用户词典，动态词频
+    initial_quality: 0.5     # 初始权重
+    comment_format:          # 自定义提示码
+      - xform/.*//           # 清空提示码
+
+  # 中英混合词汇
+  cn_en:
+    dictionary: ""
+    user_dict: en_dicts/cn_en
+    db_class: stabledb
+    enable_completion: true
+    enable_sentence: false
+    initial_quality: 0.5
+    comment_format:
+      - xform/^.+$//
+
+  # 四、默認簡體輸出
   "switches/@2/reset": 1  #表示將 switcher 列表中的第三個元素（即 simplification 開關）的初始值重設爲狀態1（即「簡體漢字」）。
 
-  # 二、增加emoji，swiches添加emoji开关， 添加emoji词典入口，词库添加emoji入口
+  # 五、增加emoji，swiches添加emoji开关， 添加emoji词典入口，词库添加emoji入口
   # emoji資源 https://github.com/rime/rime-emoji/tree/master
   "switches/@after 2":
     name: emoji
     reset: 1
     states: [ 💀, 😄 ]
 
+  # Emoji翻译器
   emoji:
     opencc_config: emoji.json
     option_name: emoji
     tips: none
     inherit_comment: false
-  # 结束emoji
 
-  “translator/dictionary”: luna_pinyin.extended   # 使用词库luna_pinyin.extended.dict.yml以扩展词库
-
-  # engine
+  # 添加emoji到engine
   engine/filters/@before 0:
-    simplifier@emoji                    # Emoji
-  # 結束emoji配置
+    simplifier@emoji
+  ### 結束emoji配置
 
-  # 三、lua腳本功能
+  # 六、lua腳本功能
   # Lua 配置: 日期、时间、星期、ISO 8601、时间戳的触发关键字
   date_translator:
     date: rq       # 日期： 2022-11-29
@@ -71,30 +97,33 @@ patch:
     key, mob, buy, dam, wap, yes, but, put, lag, buf, lip, aid, aim, dig, dim, din,
     dip, pail, cad, chap, bend]
 
-  # 添加engine入口
+  # 添加日期、日历 lua engine入口
   engine/translators/@after 0:
     lua_translator@date_translator      # 时间、日期、星期
   engine/translators/@after 1:
     lua_translator@lunar                # 农历
 
-  # 四、中英文混輸、英文輸入
-  dependencies:
-    - melt_eng
-  melt_eng:
-    dictionary: melt_eng     # 挂载词库 melt_eng.dict.yaml
-    enable_sentence: false   # 禁止造句
-    enable_user_dict: true  # 启用用户词典，动态词频
-    initial_quality: 0     # 初始权重
-    comment_format:          # 自定义提示码
-      - xform/.*//           # 清空提示码
+  ### 结束Lua 配置
+
+
   # 添加engine入口
   engine/translators/@after 2:
     table_translator@melt_eng           # 英文输入
   engine/translators/@after 3:
-    lua_translator@cn_en                # 中英混合词汇
+    table_translator@cn_en                # 中英混合词汇
+
+  # 七、自定义短语
+  # 自定义短语：custom_phrase.txt
+  custom_phrase:
+    dictionary: ""
+    user_dict: custom_phrase  # 可以修改这里，改成自己的 txt 文件
+    db_class: stabledb        # 只读数据库，无法动态调频；设为 tabledb 可以动态调频
+    enable_completion: false  # 补全提示
+    enable_sentence: false    # 禁止造句
+    initial_quality: 99       # custom_phrase 的权重应该比 pinyin 和 melt_eng 大
 
 
-  # 五、其它engine功能
+  # 八、其它engine功能
   # 添加engine入口
   engine/translators/@after 4:
     lua_translator@number_translator    # 数字、金额大写
@@ -108,7 +137,7 @@ patch:
   engine/filters/@after 3:
     lua_filter@corrector                # 错音错字提示
 
-  # 五、符號輸入定製
+  # 九、符號輸入定製
   punctuator:
     full_shape:
       '\': "、"
@@ -126,13 +155,3 @@ patch:
     reverse_lookup: "`[a-z]*'?$"
     unicode: "^U[a-f0-9]+"            # 响应 Unicode
     number: "^R[0-9]+[.]?[0-9]*"      # 响应 number_translator
-
-  # 七、自定义短语
-  # 自定义短语：custom_phrase.txt
-  custom_phrase:
-    dictionary: ""
-    user_dict: custom_phrase  # 可以修改这里，改成自己的 txt 文件
-    db_class: stabledb        # 只读数据库，无法动态调频；设为 tabledb 可以动态调频
-    enable_completion: false  # 补全提示
-    enable_sentence: false    # 禁止造句
-    initial_quality: 99       # custom_phrase 的权重应该比 pinyin 和 melt_eng 大

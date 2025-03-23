@@ -1,7 +1,7 @@
 patch:
   # 外观設置
   # 主題选择
-  style/color_scheme: soak                  # 启用的主题颜色或在squirrel.custom.yaml / weasel.custom.yaml中设定
+  style/color_scheme: microsoft                  # 启用的主题颜色或在squirrel.custom.yaml / weasel.custom.yaml中设定
   #   主题方案一
   preset_color_schemes/nightly:
     name: nightly                             # 名称
@@ -37,7 +37,7 @@ patch:
     comment_text_color: 0x999999              # 其他候选词注解文字颜色
   #
   #   主题方案三
-  preset_color_schemes/soak:                  # 暗黑
+  preset_color_schemes/soak:                  # win系统下暗黑
     name: soak                                # 配色https://pdog18.github.io/rime-soak
     author: crackself@gmail.com
     text_color: 0

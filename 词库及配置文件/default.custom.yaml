@@ -1,13 +1,8 @@
-customization:
-  distribution_code_name: Weasel
-  distribution_version: 0.15.0.0
-  generator: "Rime::SwitcherSettings"
-  modified_time: "Thu Mar 21 21:07:03 2024"
-  rime_version: 1.10.0
 patch:
   "switcher/hotkeys":
     - Control+grave
     - F4
+  "switcher/fold_options": true            # 呼出时是否折叠，多方案时建议折叠 true ，一个方案建议展开 false
   "key_binder/bindings":
     - {accept: comma, send: Page_Up, when: paging}
     - {accept: period, send: Page_Down, when: has_menu}
@@ -30,9 +25,9 @@ patch:
   "menu/page_size": 6 # 候选词个数
 
   schema_list:
-    - {schema: rime_ice}
+    # - {schema: rime_ice}
     - {schema: luna_pinyin}
-    - {schema: luna_pinyin_simp}
+    # - {schema: wubi86_jidian}
     - {schema: wubi86_jidian_pinyin}
     - {schema: wubi86_jidian_trad}
     - {schema: melt_eng}

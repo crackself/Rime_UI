@@ -53,7 +53,7 @@ patch:
     table_translator@cn_en              # 中英混合词汇
 
   # 四、默认简体
-  "switches/@2/reset": 1  #表示將 switcher 列表中的第三個元素（即 simplification 開關）的初始值重設爲狀態1（即「簡體漢字」）。
+  "switches/@2/reset": 0  # 將 switcher 列表中的第三個元素（即 simplification 開關）的初始值  0为繁体，1为简体。配合大字表时繁体可用。
 
   # emoji emoji資源 https://github.com/rime/rime-emoji/tree/master
   # swiches添加emoji开关

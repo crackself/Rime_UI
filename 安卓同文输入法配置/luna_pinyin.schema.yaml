@@ -25,9 +25,6 @@ switches:
   - name: simplification
     reset: 1
     states: ["漢字", "汉字"]
-  - name: emoji
-    reset: 1
-    states: ["💀", "😄"]
   - name: ascii_punct
     states: ["。，", "．，"]
 

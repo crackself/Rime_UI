@@ -1,0 +1,171 @@
+schema:
+  author:
+    - "佛振 <chen.sst@gmail.com>"
+  dependencies:
+    - stroke
+  description: |
+    Rime 預設的拼音輸入方案。
+    參考以下作品而創作：
+      * CC-CEDICT
+      * Android open source project
+      * Chewing - 新酷音
+      * opencc - 開放中文轉換
+
+  icon: pinyin.ico
+  name: "朙月拼音"
+  schema_id: luna_pinyin
+  version: 0.26
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: ["中文", "西文"]
+  - name: full_shape
+    states: ["半角", "全角"]
+  - name: simplification
+    reset: 1
+    states: ["漢字", "汉字"]
+  - name: emoji
+    reset: 1
+    states: ["💀", "😄"]
+  - name: ascii_punct
+    states: ["。，", "．，"]
+
+speller:
+  algebra:
+    - "abbrev/^([a-z]).+$/$1/"
+    - "abbrev/^([zcs]h).+$/$1/"
+    - "derive/^([nl])ve$/$1ue/"
+    - "derive/^([jqxy])u/$1v/"
+    - "derive/un$/uen/"
+    - "derive/ui$/uei/"
+    - "derive/iu$/iou/"
+    - "derive/([aeiou])ng$/$1gn/"
+    - "derive/([dtngkhrzcs])o(u|ng)$/$1o/"
+    - "derive/ong$/on/"
+    - "derive/ao$/oa/"
+    - "derive/([iu])a(o|ng?)$/a$1$2/"
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+
+translator:
+  contextual_suggestions: true
+  dictionary: luna_pinyin.extended
+  initial_quality: 1.5
+  max_homographs: 7
+  max_homophones: 7
+  preedit_format:
+    - "xform/([nl])v/$1ü/"
+    - "xform/([nl])ue/$1üe/"
+    - "xform/([jqxy])v/$1u/"
+
+cn_en:
+  comment_format:
+    - "xform/^.+$//"
+  db_class: stabledb
+  dictionary: ""
+  enable_completion: true
+  enable_sentence: false
+  initial_quality: 0.5
+  user_dict: "en_dicts/cn_en"
+
+custom_phrase:
+  db_class: stabledb
+  dictionary: ""
+  enable_completion: false
+  enable_sentence: false
+  initial_quality: 99
+  user_dict: custom_phrase
+
+date_translator:
+  date: rq
+  datetime: dt
+  time: sj
+  timestamp: ts
+  week: xq
+
+dependencies:
+  - melt_eng
+
+emoji:
+  inherit_comment: false
+  opencc_config: emoji.json
+  option_name: emoji
+  tips: none
+
+engine:
+  filters:
+    - "simplifier@emoji"
+    - simplifier
+    - "lua_filter@v_filter"
+    - "lua_filter@reduce_english_filter"
+    - "lua_filter@long_word_filter"
+    - "lua_filter@corrector"
+    - uniquifier
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - "lua_translator@date_translator"
+    - "lua_translator@lunar"
+    - "table_translator@melt_eng"
+    - "table_translator@cn_en"
+    - "lua_translator@number_translator"
+    - "table_translator@custom_phrase"
+    - reverse_lookup_translator
+    - script_translator
+
+melt_eng:
+  comment_format:
+    - "xform/.*//"
+  dictionary: melt_eng
+  enable_sentence: false
+  enable_user_dict: false
+  initial_quality: 0.5
+
+reverse_lookup:
+  comment_format:
+    - "xform/([nl])v/$1ü/"
+  dictionary: stroke
+  enable_completion: true
+  preedit_format:
+    - "xlit/hspnz/一丨丿丶乙/"
+  prefix: "`"
+  suffix: "'"
+  tips: "〔筆畫〕"
+
+punctuator:
+  import_preset: symbols
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
+    number: "^R[0-9]+[.]?[0-9]*"
+    punct: "^v([0-9]|10|[A-Za-z]+)$"
+    reverse_lookup: "`[a-z]*'?$"
+    unicode: "^U[a-f0-9]+"
+    uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
+    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
+
+__patch:
+  # 使用八股文語言模型
+  - grammar:/hant?
+  # 用家自選配置
+  - luna_pinyin.custom:/patch?

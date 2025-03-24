@@ -1,0 +1,28 @@
+patch:
+  # 外观設置
+  #
+  # 主窗口外观设置
+  style/candidate_list_layout: linear		# 候选字体框排版	stacked 竖排 | linear  横排排
+  style/text_orientation: horizontal		# 候选词条排版	horizontal 水平| vertical 垂直
+  style/inline_preedit: true			# 候选窗 不显示内选区(即拼音区)
+  style/preedit_type: "composition"		# 輸入時將候選词顯示於 composition 中  "composition"为拼音 | "preview" | "preview_all"
+  style/display_tray_icon: false		# 显示托盘图标
+  #
+  # 圆角配置
+  style/layout/border: 1			# 候选框边框粗细
+  style/layout/spacing: 5			# 候选窗与候选词的间距
+  style/layout/candidate_spacing: 5		# 候选字间隔
+  style/layout/shadow_radius: 5			# 阴影圆角
+  style/layout/shadow_offset_x: 0		# 阴影左右边距
+  style/layout/shadow_offset_y: 0		# 阴影上下边距
+  #
+  style/layout/margin_x: 6			#「天圓地方」佈局(左圆右方)：由 margin 與 hilite_padding 確定, 當margin <= hilite_padding時生效
+  style/layout/margin_y: 6			# margin_x 或 margin_y 設置爲負值時，隱藏輸入窗口，不影響方案選單顯示
+  #
+  style/layout/hilite_padding: 5		# 候选字背景色色块高度
+  style/layout/hilite_spacing: 0		# 序号和候选字之间的间隔
+  style/layout/hilited_corner_radius: 6		# 候选词高亮圓角參數 不小于窗口圆角半径
+  #style/layout/round_corner: 6			# 候选字高亮圆角半径  等同与style/layout/hilited_corner_radius
+  style/layout/corner_radius: 6			# 窗口等圓角圆角半径
+  style/layout/min_height: 0			# 最小高度 
+ #

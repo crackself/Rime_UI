@@ -1,0 +1,115 @@
+patch:
+  # 主窗口外观設置
+  style/horizontal: true                      # 橫排候選字
+  style/inline_preedit: true                  # 候选窗 不显示内选区(即拼音区)
+  style/preedit_type: "composition"           # 輸入時將候選词顯示於 composition 中  "composition"为拼音 | "preview" | "preview_all"
+  style/display_tray_icon: false              # 显示托盘图标
+  # 结束显示设置
+  #
+  # 主窗口字体配置
+  style/font_face: "LXGW WenKai Mono:regular:bold"
+  #style/font_face: "HanaMinA:regular:normal"
+  #style/font_face: "TH-Ming-P0:bold:normal"      # 字體名稱，從記事本等處的系統字體對話框裏能看到
+  style/font_point: 30                        # 字號，只認數字的，不認「五號」、「小五」這樣的
+  #
+  style/label_font_face: 微软雅黑              # 候选字序号字体
+  style/label_font_point: 15                  # 候选字序号字体大小
+  style/layout/align_type: center             # 候选字序号上下位置。"top" | "center" | "bottom"
+  style/comment_font_face: 微软雅黑               # 註解字體
+  style/comment_font_point: 20                # 註解字體大小
+  # 结束字体配置
+  #
+  style/layout/min_height: 0
+  #
+  # 圆角配置
+  style/layout/border: 1                # 候选框边框粗细
+  style/layout/spacing: 5               # 候选窗与候选词的间距
+  style/layout/candidate_spacing: 5     # 候选字间隔
+  style/layout/shadow_radius: 5         # 阴影圆角
+  style/layout/shadow_offset_x: 0       # 阴影左右边距
+  style/layout/shadow_offset_y: 0       # 阴影上下边距
+  #
+  style/layout/margin_x: 6              #「天圓地方」佈局(左圆右方)：由 margin 與 hilite_padding 確定, 當margin <= hilite_padding時生效
+  style/layout/margin_y: 6              # margin_x 或 margin_y 設置爲負值時，隱藏輸入窗口，不影響方案選單顯示
+  #
+  style/layout/hilite_padding: 5        # 候选字背景色色块高度
+  style/layout/hilite_spacing: 0        # 序号和候选字之间的间隔
+  style/layout/hilited_corner_radius: 6 # 候选词高亮圓角參數 不小于窗口圆角半径
+  #style/layout/round_corner: 6         # 候选字高亮圆角半径  等同与style/layout/hilited_corner_radius
+  style/layout/corner_radius: 6         # 窗口等圓角圆角半径
+  # 结束圆角配置
+  #
+  #
+  # 主題选择
+  style/color_scheme: microsoft                   # 启用的主题颜色或在weasel.custom.yaml中设定
+  #
+  #
+  #   主题方案一
+  preset_color_schemes/nightly:             # 暗黑
+    name: nightly # 配色取自微信键盘
+    author: crackself@gmail.com
+    back_color: 0x4D4D4D                    # 主窗口背景    F为白色，0为黑色
+    border_color: 0x4D4D4D                  # 边框颜色 与背景色相同时，为无边框外观
+    text_color: 0x00FF11                    # 拼音区文字颜色
+    hilited_text_color: 0xC300FF            # 拼音区高亮文字颜色
+    hilited_back_color: 0xFFFFFF            # 拼音区高亮背景颜色
+    hilited_label_color: 10878804           # 第一候选词序号字体颜色
+    hilited_candidate_text_color: 0xC300FF  # 第一候选项文字颜色(含序号)
+    hilited_candidate_back_color: 0xDBDBDB  # 第一候选项背景颜色
+    hilited_comment_text_color: 0x999999    # 注解文字高亮
+    label_color: 0xB3B4B5                   # 预选栏编号颜色
+    candidate_text_color: 0x00FFFF          # 其他候选项文字颜色
+    comment_text_color: 0x0000FF            # 其他候选项注解文字
+  #
+  #   主题方案二
+  preset_color_schemes/daily:               # 明亮
+    name: daily                             # 配色取自微信键盘
+    author: crackself@gmail.com
+    back_color: 0xFFFFFF                    # 主窗口背景    F为白色，0为黑色
+    border_color: 0xDDDDDD                  # 边框颜色 与背景色相同时，为无边框外观
+    text_color: 0x00FF11                    # 拼音区文字颜色s
+    hilited_text_color: 0xC300FF            # 拼音区高亮文字颜色
+    hilited_back_color: 0xFFFFFF            # 拼音区高亮背景颜色
+    hilited_label_color: 10878804           # 第一候选词序号字体颜色
+    hilited_candidate_text_color: 0xFFFFFF  # 第一候选词文字颜色(含序号)
+    hilited_candidate_back_color: 0xcc8f29  # 第一候选词背景颜色
+    hilited_comment_text_color: 0x999999    # 第一候选词注解文字高亮
+    label_color: 0x303030                   # 其他候选栏序号字体颜色
+    candidate_text_color: 0x000000          # 其他候选词文字颜色
+    comment_text_color: 0x999999            # 其他候选词注解文字颜色
+  
+  #   主题方案三
+  preset_color_schemes/soak:               # 明亮
+    name: soak                             # 配色https://pdog18.github.io/rime-soak
+    author: crackself@gmail.com
+    text_color: 0
+    back_color: 0
+    border_color: 0
+    label_color: 16733640
+    hilited_text_color: 0
+    hilited_back_color: 13948116
+    candidate_text_color: 12829635
+    comment_text_color: 13468263
+    hilited_candidate_text_color: 16777215
+    hilited_comment_text_color: 8373813
+    hilited_candidate_back_color: 4408131
+    hilited_label_color: 10878804
+
+  #   主题方案四
+  preset_color_schemes/microsoft:               # 微软明亮
+    name: microsoft                             # 配色https://pdog18.github.io/rime-soak
+    author: crackself@gmail.com
+    text_color: 0x000000
+    back_color: 0xF4F4F4
+    border_color: 0
+    label_color: 16733640
+    hilited_text_color: 0xF4F4F4
+    hilited_back_color: 0xFFD8A6
+    candidate_text_color: 0x000000
+    comment_text_color: 0x888888
+    hilited_candidate_text_color: 0x000000
+    hilited_comment_text_color: 8373813
+    hilited_candidate_back_color: 0xFFD8A6
+    hilited_label_color: 0
+
+    # 结束主題色彩配置

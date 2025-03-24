@@ -1,0 +1,4 @@
+patch:
+  __include: "theme_ui_squirrel:/patch"
+  __include: "theme_font:/patch"
+  __include: "theme_color:/patch"

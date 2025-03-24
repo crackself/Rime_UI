@@ -1,0 +1,155 @@
+# Rime schema
+# encoding: utf-8
+# 朙月拼音自定義修改，用於自帶的默認朙月拼音
+# 参考定制指南 https://github.com/rime/home/wiki/RimeWithSchemata#%E5%AE%9A%E8%A3%BD%E6%8C%87%E5%8D%97
+
+#patch:
+#  "一級設定項/二級設定項/三級設定項": 新的設定值
+#  "另一個設定項": 新的設定值
+#  "再一個設定項": 新的設定值
+#  "含列表的設定項/@0": 列表第一個元素新的設定值
+#  "含列表的設定項/@last": 列表最後一個元素新的設定值
+#  "含列表的設定項/@before 0": 在列表第一個元素之前插入新的設定值（不建議在補靪中使用）
+#  "含列表的設定項/@after last": 在列表最後一個元素之後插入新的設定值（不建議在補靪中使用）
+#  "含列表的設定項/@next": 在列表最後一個元素之後插入新的設定值（不建議在補靪中使用）
+
+patch:
+
+  # 一、添加輸入方案ico圖標，windows下生效
+  schema/icon: pinyin.ico
+
+  # 二、扩展词库配置
+  "translator/dictionary": luna_pinyin.extended   # 使用词库luna_pinyin.extended.dict.yml以扩展词库
+  "translator/initial_quality": 1.5         # 拼音的权重应该比英文大
+
+  # 三、中英文混輸、英文輸入
+  dependencies:
+    - melt_eng
+
+  # 次翻译器，英文
+  melt_eng:
+    dictionary: melt_eng     # 挂载词库 melt_eng.dict.yaml
+    enable_sentence: false   # 禁止造句
+    enable_user_dict: false  # 启用用户词典，动态词频
+    initial_quality: 0.5     # 初始权重
+    comment_format:          # 自定义提示码
+      - xform/.*//           # 清空提示码
+
+  # 中英混合词汇
+  cn_en:
+    dictionary: ""
+    user_dict: en_dicts/cn_en
+    db_class: stabledb
+    enable_completion: true
+    enable_sentence: false
+    initial_quality: 0.5
+    comment_format:
+      - xform/^.+$//
+
+  # 添加engine入口
+  engine/translators/@after 2:
+    table_translator@melt_eng           # 英文输入
+  engine/translators/@after 3:
+    table_translator@cn_en              # 中英混合词汇
+
+  # 四、默认简体
+  "switches/@2/reset": 1  #表示將 switcher 列表中的第三個元素（即 simplification 開關）的初始值重設爲狀態1（即「簡體漢字」）。
+
+  # emoji emoji資源 https://github.com/rime/rime-emoji/tree/master
+  # swiches添加emoji开关
+  "switches/@after 2":
+    name: emoji
+    reset: 1
+    states: [ 💀, 😄 ]
+
+  # Emoji翻译器
+  emoji:
+    opencc_config: emoji.json
+    option_name: emoji
+    tips: none
+    inherit_comment: false
+
+  # 添加emoji到engine
+  engine/filters/@before 0:
+    simplifier@emoji
+
+  # 六、lua腳本功能
+  # 日期、时间、星期、ISO 8601、时间戳的触发关键字
+  date_translator:
+    date: rq       # 日期： 2022-11-29
+    time: sj       # 时间： 18:13
+    week: xq       # 星期： 星期二
+    datetime: dt   # ISO 8601： 2022-11-29T18:13:11+08:00
+    timestamp: ts  # 时间戳： 1669716794
+
+  # 长词优先，提升 count 个词语，插入到第 idx 个位置。
+  # 示例：将 2 个词插入到第 4、5 个候选项，输入 jie 得到「1接 2解 3姐 4饥饿 5极恶」
+  long_word_filter:
+    count: 2
+    idx: 4
+  
+  # 降低部分英语单词在候选项的位置
+  # 详细介绍 https://dvel.me/posts/make-rime-en-better/#短单词置顶的问题
+  # 正常情况： 输入 rug 得到 「1.rug 2.如果 …… 」
+  # 降低之后： 输入 rug 得到 「1.如果 2.rug …… 」
+  reduce_english_filter:
+    # 降低到第 idx 个位置
+    idx: 2
+    # 要降低的单词，匹配的是输入码，即全小写。
+    words: [rug, bus, ship, laos, bail, bam, bans, bib, bos, chic, chit, dab, dag,
+    dal, dit, dub, dug, fab, gam, ger, gus, hem, hep, hud, kat, lam, lax, lex, lug,
+    lux, moc, mos, mot, mum, nad, nay, nib, nip, pak, pap, pax, rig, rum, sac, sal,
+    sax, sec, shin, sis, ska, slang, sus, tad, taj, tac, tic, yep, yum, fax, cain,
+    key, mob, buy, dam, wap, yes, but, put, lag, buf, lip, aid, aim, dig, dim, din,
+    dip, pail, cad, chap, bend]
+
+  # 添加日期、日历 lua engine入口
+  engine/translators/@after 0:
+    lua_translator@date_translator      # 时间、日期、星期
+  engine/translators/@after 1:
+    lua_translator@lunar                # 农历
+
+
+  # 七、自定义短语
+  # 自定义短语：custom_phrase.txt
+  custom_phrase:
+    dictionary: ""
+    user_dict: custom_phrase  # 可以修改这里，改成自己的 txt 文件
+    db_class: stabledb        # 只读数据库，无法动态调频；设为 tabledb 可以动态调频
+    enable_completion: false  # 补全提示
+    enable_sentence: false    # 禁止造句
+    initial_quality: 99       # custom_phrase 的权重应该比 pinyin 和 melt_eng 大
+
+
+  # 八、其它engine功能
+  # 添加engine入口
+  engine/translators/@after 4:
+    lua_translator@number_translator    # 数字、金额大写
+  engine/filters/@after 0:
+    lua_filter@v_filter                 # v 模式 symbols 优先（否则是英文优先）
+
+  engine/filters/@after 1:
+    lua_filter@reduce_english_filter    # 降低部分英语单词在候选项的位置
+  engine/filters/@after 2:
+    lua_filter@long_word_filter         # 长词优先
+  engine/filters/@after 3:
+    lua_filter@corrector                # 错音错字提示
+
+  # 九、符號輸入定製
+  punctuator:
+    full_shape:
+      '\': "、"
+      "/" : [ ／, "/", ÷ ]
+      __include: default:/punctuator/full_shape  # 从 default.yaml 导入配置
+    half_shape:
+      '\': "、"
+      "/" : [ "/", ／, ÷ ]
+      __include: default:/punctuator/half_shape  # 从 default.yaml 导入配置
+    symbols:
+      __include: symbols_v:/symbols              # 从 symbols_v.yaml 导入配置
+
+  recognizer/patterns:
+    punct: "^v([0-9]|10|[A-Za-z]+)$"  # 响应 symbols_v.yaml 的 symbols，用 'v' 替换 '/'
+    reverse_lookup: "`[a-z]*'?$"
+    unicode: "^U[a-f0-9]+"            # 响应 Unicode
+    number: "^R[0-9]+[.]?[0-9]*"      # 响应 number_translator
